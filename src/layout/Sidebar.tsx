@@ -42,12 +42,12 @@ const Sidebar = ({
             fontSize: isMobileLandscape ? "0.65rem" : "1rem",
             fontWeight: 400,
             backgroundColor:
-              location.pathname === item.url ? "rgb(160 80 112)" : "#222222",
+              location.pathname === item.url ? "#ed2148" : "#222222",
             color: "white",
             "&:hover": {
               backgroundColor:
                 location.pathname === item.url
-                  ? "rgb(160 80 112 / 60%)"
+                  ? "#ed214899"
                   : "#21212199",
               color: "white",
             },

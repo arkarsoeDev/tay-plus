@@ -94,7 +94,7 @@ const TVChannels = () => {
           justifyContent='center'
           alignItems='center'
           minHeight='400px'>
-          <CircularProgress sx={{ color: "#A05070" }} size={50} />
+          <CircularProgress sx={{ color: "#ed2148" }} size={50} />
         </Box>
       ) : (
         <>
@@ -144,7 +144,7 @@ const TVChannels = () => {
                   component='h4'
                   fontSize={isMobileLandscape ? 14 : 20}
                   fontWeight={700}
-                  color='#C06080'
+                  color='#ed2148'
                   mb='12px'>
                   {t("Program Schedules")}
                 </Typography>
@@ -175,7 +175,7 @@ const TVChannels = () => {
                   "& .MuiPaginationItem-root": {
                     color: "white",
                     "&.Mui-selected": {
-                      backgroundColor: "#A05070",
+                      backgroundColor: "#ed2148",
                       color: "white",
                     },
                     "&:hover": {

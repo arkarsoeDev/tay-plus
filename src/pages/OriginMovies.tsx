@@ -326,11 +326,11 @@ const OriginMovies = () => {
     borderRadius: "6px",
     fontSize: isMobileLandscape ? 14 : 20,
     fontWeight: 400,
-    backgroundColor: active ? "rgb(160 80 112)" : "rgba(51, 51, 102, 1)",
+    backgroundColor: active ? "#ed2148" : "rgba(51, 51, 102, 1)",
     color: "white",
     "&:hover": {
       backgroundColor: active
-        ? "rgb(160 80 112 / 60%)"
+        ? "#ed214899"
         : "rgba(51, 51, 102, 0.6)",
       color: "white",
     },
@@ -391,7 +391,7 @@ const OriginMovies = () => {
         display='flex'
         justifyContent='center'
         alignItems='center'>
-        <CircularProgress sx={{ color: "#A05070" }} size={50} />
+        <CircularProgress sx={{ color: "#ed2148" }} size={50} />
       </Box>
     );
   }
@@ -522,7 +522,7 @@ const OriginMovies = () => {
               marginTop: "20px",
             }}>
             {isLoadingMore && (
-              <CircularProgress sx={{ color: "#A05070" }} size={30} />
+              <CircularProgress sx={{ color: "#ed2148" }} size={30} />
             )}
           </Box>
         )}

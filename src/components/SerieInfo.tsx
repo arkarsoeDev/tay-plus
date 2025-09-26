@@ -384,14 +384,14 @@ const SerieInfo = ({
                       fontSize: 24,
                       fontWeight: selectedEpisodeId === episode.id ? 600 : 400,
                       color:
-                        selectedEpisodeId === episode.id ? "#A05070" : "white",
+                        selectedEpisodeId === episode.id ? "#ed2148" : "white",
                       textTransform: "capitalize",
                       mt: 2,
                       cursor: "pointer",
                       "&:hover": {
                         color:
                           selectedEpisodeId === episode.id
-                            ? "#A05070"
+                            ? "#ed2148"
                             : "#cccccc",
                       },
                     }}>

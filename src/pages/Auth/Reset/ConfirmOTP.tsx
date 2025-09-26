@@ -124,7 +124,7 @@ const ConfirmOTP = () => {
             variant='contained'
             sx={{
               px: 6,
-              bgcolor: "#A05070",
+              bgcolor: "#ed2148",
               height: 48,
               textTransform: "capitalize",
               fontWeight: 700,

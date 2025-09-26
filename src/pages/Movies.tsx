@@ -336,7 +336,7 @@ const Movies = () => {
         display='flex'
         justifyContent='center'
         alignItems='center'>
-        <CircularProgress sx={{ color: "#A05070" }} size={50} />
+        <CircularProgress sx={{ color: "#ed2148" }} size={50} />
       </Box>
     );
   }
@@ -467,7 +467,7 @@ const Movies = () => {
                 marginTop: "20px",
               }}>
               {isLoadingMore && (
-                <CircularProgress sx={{ color: "#A05070" }} size={30} />
+                <CircularProgress sx={{ color: "#ed2148" }} size={30} />
               )}
             </Box>
           )}
@@ -483,7 +483,7 @@ const Movies = () => {
       display='flex'
       justifyContent='center'
       alignItems='center'>
-      <CircularProgress sx={{ color: "#A05070" }} size={50} />
+      <CircularProgress sx={{ color: "#ed2148" }} size={50} />
     </Box>
   );
 };

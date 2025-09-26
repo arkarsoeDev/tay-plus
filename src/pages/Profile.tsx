@@ -181,7 +181,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               {t("Name")}
             </Typography>
           </Grid>
@@ -202,7 +202,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               {/* Date of Birth */}
               {t("Phone")}
             </Typography>
@@ -224,7 +224,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               {t("Email")}
             </Typography>
           </Grid>
@@ -245,7 +245,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               Township
             </Typography>
           </Grid>
@@ -270,7 +270,7 @@ const Profile = () => {
               textTransform: "capitalize",
               fontSize: isMobileLandscape ? 12 : 16,
               fontWeight: 700,
-              bgcolor: "#A05070",
+              bgcolor: "#ed2148",
             }}>
             {t("Edit Profile")}
           </Button>
@@ -283,7 +283,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               {t("PIN Number")}
             </Typography>
           </Grid>
@@ -309,7 +309,7 @@ const Profile = () => {
               textTransform: "capitalize",
               fontSize: isMobileLandscape ? 12 : 16,
               fontWeight: 700,
-              bgcolor: "#A05070",
+              bgcolor: "#ed2148",
             }}>
             {t("Change PIN")}
           </Button>
@@ -323,7 +323,7 @@ const Profile = () => {
               component='h5'
               fontSize={isMobileLandscape ? 14 : 16}
               fontWeight={400}
-              color='#A05070'>
+              color='#ed2148'>
               {t("Language Setting")}
             </Typography>
           </Grid>
@@ -397,7 +397,7 @@ const Profile = () => {
               textTransform: "capitalize",
               fontSize: isMobileLandscape ? 12 : 16,
               fontWeight: 700,
-              bgcolor: "#A05070",
+              bgcolor: "#ed2148",
             }}>
             {t("Log Out")}
           </Button>
@@ -425,7 +425,7 @@ const Profile = () => {
               <Box
                 overflow='hidden'
                 borderRadius={1}
-                border='1px solid #A05070'
+                border='1px solid #ed2148'
                 width={92}
                 height={92}>
                 <img
@@ -800,7 +800,7 @@ const Profile = () => {
               variant='contained'
               sx={{
                 px: 6,
-                bgcolor: "#A05070",
+                bgcolor: "#ed2148",
                 height: isMobileLandscape ? 28 : 48,
                 textTransform: "capitalize",
                 fontWeight: 700,
@@ -955,7 +955,7 @@ const Profile = () => {
               variant='contained'
               sx={{
                 px: 6,
-                bgcolor: "#A05070",
+                bgcolor: "#ed2148",
                 height: isMobileLandscape ? 28 : 48,
                 textTransform: "capitalize",
                 fontWeight: 700,

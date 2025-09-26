@@ -112,7 +112,7 @@ const TVSeries = () => {
         display='flex'
         justifyContent='center'
         alignItems='center'>
-        <CircularProgress sx={{ color: "#A05070" }} size={50} />
+        <CircularProgress sx={{ color: "#ed2148" }} size={50} />
       </Box>
     );
   }

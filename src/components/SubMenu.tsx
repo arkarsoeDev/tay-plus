@@ -45,8 +45,8 @@ const SubMenu = ({
           mt: isMobileLandscape ? "25px" : "90px",
         }}>
         {sideBarMenuItems.length > 0 &&
-        sideBarMenuItems[0]?.origin_id !== undefined &&
-        location.pathname === activeTab ? (
+          sideBarMenuItems[0]?.origin_id !== undefined &&
+          location.pathname === activeTab ? (
           <MenuItem
             to={activeTab}
             component={Link}
@@ -70,13 +70,13 @@ const SubMenu = ({
               fontWeight: 400,
               backgroundColor:
                 location.pathname === "/"
-                  ? "rgb(160 80 112)"
+                  ? "#ed2148"
                   : "rgba(51, 51, 102, 1)",
               color: "white",
               "&:hover": {
                 backgroundColor:
                   location.pathname === "/"
-                    ? "rgb(160 80 112 / 60%)"
+                    ? "#ed214899"
                     : "rgba(51, 51, 102, 0.6)",
                 color: "white",
               },
@@ -99,13 +99,13 @@ const SubMenu = ({
             fontWeight: 400,
             backgroundColor:
               location.pathname === "/continue-watching"
-                ? "rgb(160 80 112)"
+                ? "#ed2148"
                 : "rgba(51, 51, 102, 1)",
             color: "white",
             "&:hover": {
               backgroundColor:
                 location.pathname === "/continue-watching"
-                  ? "rgb(160 80 112 / 60%)"
+                  ? "#ed214899"
                   : "rgba(51, 51, 102, 0.6)",
               color: "white",
             },
@@ -117,80 +117,80 @@ const SubMenu = ({
         </MenuItem>
         {sideBarMenuItems?.length > 0
           ? sideBarMenuItems
-              ?.filter(
-                (item: any) =>
-                  item.text !== "Home" && item.text !== "Your Profile"
-              )
-              .map((item: any, index: number) => (
-                <Box key={`parent-${index}`} display='flex'>
-                  {!showSubMenus && (
+            ?.filter(
+              (item: any) =>
+                item.text !== "Home" && item.text !== "Your Profile"
+            )
+            .map((item: any, index: number) => (
+              <Box key={`parent-${index}`} display='flex'>
+                {!showSubMenus && (
+                  <MenuItem
+                    to={item.url}
+                    component={Link}
+                    onClick={() => {
+                      setSelectedChildOrigin?.(item.origin_id);
+                      if ("url" in item) {
+                        setActiveTab(item.url);
+                      } else {
+                        if (item.children?.length > 0) {
+                          setShowSubMenus(!showSubMenus);
+                        }
+                        setSubMenuIndex(index);
+                      }
+                    }}
+                    sx={getStyle(
+                      item.origin_id !== undefined
+                        ? selectedChildOrigin === item.origin_id
+                        : "url" in item
+                          ? activeTab === item.url
+                          : subMenuIndex === index,
+                      isMobileLandscape
+                    )}>
+                    <ListItemText
+                      sx={{
+                        span: { fontSize: isMobileLandscape ? 10 : 16 },
+                      }}>
+                      {item && "origin_id" in item
+                        ? `${t(item.origin_name)}`
+                        : `${t(item.name)}`}
+                    </ListItemText>
+                  </MenuItem>
+                )}
+
+                {/* Render children if exist */}
+                {showSubMenus &&
+                  item.children?.map((child: any, cIndex: number) => (
                     <MenuItem
-                      to={item.url}
+                      key={`child-${index}-${cIndex}`}
+                      to={child.url}
                       component={Link}
+                      // onClick={() => setActiveTab(child.url)}
                       onClick={() => {
-                        setSelectedChildOrigin?.(item.origin_id);
-                        if ("url" in item) {
-                          setActiveTab(item.url);
+                        if ("url" in child) {
+                          setActiveTab(child.url);
                         } else {
-                          if (item.children?.length > 0) {
+                          if (child.children?.length > 0) {
                             setShowSubMenus(!showSubMenus);
                           }
-                          setSubMenuIndex(index);
+                          setSubMenuIndex(cIndex);
                         }
                       }}
                       sx={getStyle(
-                        item.origin_id !== undefined
-                          ? selectedChildOrigin === item.origin_id
-                          : "url" in item
-                          ? activeTab === item.url
-                          : subMenuIndex === index,
+                        "url" in child
+                          ? activeTab === child.url
+                          : subMenuIndex === cIndex,
                         isMobileLandscape
                       )}>
                       <ListItemText
                         sx={{
                           span: { fontSize: isMobileLandscape ? 10 : 16 },
                         }}>
-                        {item && "origin_id" in item
-                          ? `${t(item.origin_name)}`
-                          : `${t(item.name)}`}
+                        {child.name}
                       </ListItemText>
                     </MenuItem>
-                  )}
-
-                  {/* Render children if exist */}
-                  {showSubMenus &&
-                    item.children?.map((child: any, cIndex: number) => (
-                      <MenuItem
-                        key={`child-${index}-${cIndex}`}
-                        to={child.url}
-                        component={Link}
-                        // onClick={() => setActiveTab(child.url)}
-                        onClick={() => {
-                          if ("url" in child) {
-                            setActiveTab(child.url);
-                          } else {
-                            if (child.children?.length > 0) {
-                              setShowSubMenus(!showSubMenus);
-                            }
-                            setSubMenuIndex(cIndex);
-                          }
-                        }}
-                        sx={getStyle(
-                          "url" in child
-                            ? activeTab === child.url
-                            : subMenuIndex === cIndex,
-                          isMobileLandscape
-                        )}>
-                        <ListItemText
-                          sx={{
-                            span: { fontSize: isMobileLandscape ? 10 : 16 },
-                          }}>
-                          {child.name}
-                        </ListItemText>
-                      </MenuItem>
-                    ))}
-                </Box>
-              ))
+                  ))}
+              </Box>
+            ))
           : null}
       </MenuList>
     </Box>
@@ -204,11 +204,11 @@ const getStyle = (active: boolean, isMobileLandscape: boolean = false) => ({
   borderRadius: "6px",
   fontSize: isMobileLandscape ? 14 : 16,
   fontWeight: 400,
-  backgroundColor: active ? "rgb(160 80 112)" : "rgba(51, 51, 102, 1)",
+  backgroundColor: active ? "#ed2148" : "rgba(51, 51, 102, 1)",
   color: "white",
   "&:hover": {
     backgroundColor: active
-      ? "rgb(160 80 112 / 60%)"
+      ? "#ed214899"
       : "rgba(51, 51, 102, 0.6)",
     color: "white",
   },
