@@ -121,7 +121,7 @@ const TVChannels = () => {
                   p={1}
                   border='1px solid #ccc'>
                   <img
-                    src={`https://api.fliks.com.mm/${tv_channel.channel_image}`}
+                    src={`${import.meta.env.VITE_BASE_DOMAIN}/${tv_channel.channel_image}`}
                     alt={tv_channel.channel_name}
                     width='100%'
                     height='100%'

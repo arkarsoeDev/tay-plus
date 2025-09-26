@@ -205,7 +205,7 @@ const Login = () => {
           </ToggleButton>
         </ToggleButtonGroup>
 
-        <Typography
+        {/* <Typography
           variant='body2'
           color='#fff'
           fontSize={16}
@@ -215,8 +215,8 @@ const Login = () => {
             textDecoration: "underline",
             cursor: "pointer",
           }}>
-          စိတ်အပန်းပြေစေဖို့ရာ Fliks ရှိနေမှ ပြည့်စုံမှာ
-        </Typography>
+          စိတ်အပန်းပြေစေဖို့ရာ TAYplus ရှိနေမှ ပြည့်စုံမှာ
+        </Typography> */}
       </Box>
     </Box>
   );
