@@ -21,6 +21,10 @@ const AuthLayout = () => {
 
   useEffect(() => {
     lockLandscape();
+
+    return () => {
+      screen.orientation.unlock();
+    }
   }, [])
 
   return (

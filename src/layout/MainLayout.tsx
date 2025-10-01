@@ -58,7 +58,10 @@ const MainLayout = () => {
   // -------------------------------------------------------------
   useEffect(() => {
     lockLandscape();
-    
+
+    return () => {
+      screen.orientation.unlock();
+    }
     // The cleanup function is generally not needed if you want the lock 
     // to persist across all protected routes within this layout.
   }, []); // Empty dependency array means it runs once on mount
