@@ -21,6 +21,7 @@ import OriginMovies from "../pages/OriginMovies";
 // import HomePage from "../pages/Home";
 import MovieList from "../pages/MovieList";
 import SeriesHomePage from "../pages/SeriesHome";
+import AuthLayout from "../layout/AuthLayout";
 
 type RouteMeta = {
   title?: string;
@@ -145,95 +146,101 @@ export const routes: RouteConfig[] = [
       },
     ],
   },
+  {
+    element: <AuthLayout />,
+    path: "",
+    meta: { title: "Auth", requiredAuth: false },
+    children: [
+      {
+        element: <Login />,
+        path: "/login",
+        meta: {
+          title: "Login",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <EnterPin />,
+        path: "/enter-pin",
+        meta: {
+          title: "Enter Pin",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <LoginSuccess />,
+        path: "/login-success",
+        meta: {
+          title: "Login Success",
+          requiredAuth: false,
+        },
+      },
 
-  {
-    element: <Login />,
-    path: "/login",
-    meta: {
-      title: "Login",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <EnterPin />,
-    path: "/enter-pin",
-    meta: {
-      title: "Enter Pin",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <LoginSuccess />,
-    path: "/login-success",
-    meta: {
-      title: "Login Success",
-      requiredAuth: false,
-    },
-  },
+      {
+        element: <CheckPhone />,
+        path: "/check-phone",
+        meta: {
+          title: "Check Phone",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <ConfirmOTP />,
+        path: "/confirm-otp",
+        meta: {
+          title: "Confirm OTP",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <ResetPIN />,
+        path: "/reset-pin",
+        meta: {
+          title: "Reset Pin",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <ResetSuccess />,
+        path: "/reset-success",
+        meta: {
+          title: "Reset Success",
+          requiredAuth: false,
+        },
+      },
 
-  {
-    element: <CheckPhone />,
-    path: "/check-phone",
-    meta: {
-      title: "Check Phone",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <ConfirmOTP />,
-    path: "/confirm-otp",
-    meta: {
-      title: "Confirm OTP",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <ResetPIN />,
-    path: "/reset-pin",
-    meta: {
-      title: "Reset Pin",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <ResetSuccess />,
-    path: "/reset-success",
-    meta: {
-      title: "Reset Success",
-      requiredAuth: false,
-    },
-  },
-
-  {
-    element: <Register />,
-    path: "/register",
-    meta: {
-      title: "Register",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <ConfirmOTPRegister />,
-    path: "/confirm-register-otp",
-    meta: {
-      title: "Confirm Register OTP",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <CreatePIN />,
-    path: "/create-pin",
-    meta: {
-      title: "Create Pin",
-      requiredAuth: false,
-    },
-  },
-  {
-    element: <RegisterSuccess />,
-    path: "/register-success",
-    meta: {
-      title: "Register Success",
-      requiredAuth: false,
-    },
-  },
+      {
+        element: <Register />,
+        path: "/register",
+        meta: {
+          title: "Register",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <ConfirmOTPRegister />,
+        path: "/confirm-register-otp",
+        meta: {
+          title: "Confirm Register OTP",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <CreatePIN />,
+        path: "/create-pin",
+        meta: {
+          title: "Create Pin",
+          requiredAuth: false,
+        },
+      },
+      {
+        element: <RegisterSuccess />,
+        path: "/register-success",
+        meta: {
+          title: "Register Success",
+          requiredAuth: false,
+        },
+      },
+    ]
+  }
 ];

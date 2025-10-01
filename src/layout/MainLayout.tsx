@@ -26,7 +26,7 @@ const lockLandscape = () => {
   const lock = (screen.orientation as any).lock;
   if (isPWAInstalled() && screen.orientation && lock) {
     lock('landscape')
-      .then(() => console.log('Screen locked to landscape for content view.'))
+      .then(() => alert('Screen locked to landscape for content view.'))
       .catch((error: any) => console.warn('Landscape lock failed or denied:', error));
   }
 };
@@ -58,7 +58,7 @@ const MainLayout = () => {
   // -------------------------------------------------------------
   useEffect(() => {
     lockLandscape();
-
+    
     // The cleanup function is generally not needed if you want the lock 
     // to persist across all protected routes within this layout.
   }, []); // Empty dependency array means it runs once on mount
