@@ -7,6 +7,32 @@ import type { AppDispatch } from "../store";
 import { getOrigins } from "../store/moviesSlice";
 import { useTranslation } from "react-i18next";
 
+// --- Orientation Helper Functions (Recommended to keep these separate, but defined here for context) ---
+
+/**
+ * Checks if the app is running in PWA standalone mode.
+ */
+const isPWAInstalled = () => {
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  const isIOSStandalone = ('standalone' in window.navigator) && (window.navigator.standalone);
+  return isStandalone || isIOSStandalone;
+};
+
+/**
+ * Locks the screen orientation to landscape.
+ */
+const lockLandscape = () => {
+  // Only apply the lock if the app is installed as a PWA
+  const lock = (screen.orientation as any).lock;
+  if (isPWAInstalled() && screen.orientation && lock) {
+    lock('landscape')
+      .then(() => console.log('Screen locked to landscape for content view.'))
+      .catch((error: any) => console.warn('Landscape lock failed or denied:', error));
+  }
+};
+
+// --- MainLayout Component ---
+
 const MainLayout = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
@@ -26,6 +52,17 @@ const MainLayout = () => {
   );
 
   const { origins = [] } = useSelector((state: any) => state.movies);
+
+  // -------------------------------------------------------------
+  // 🔑 IMPLEMENT LANDSCAPE LOCK HERE
+  // -------------------------------------------------------------
+  useEffect(() => {
+    lockLandscape();
+
+    // The cleanup function is generally not needed if you want the lock 
+    // to persist across all protected routes within this layout.
+  }, []); // Empty dependency array means it runs once on mount
+  // -------------------------------------------------------------
 
   useEffect(() => {
     dispatch(getOrigins());

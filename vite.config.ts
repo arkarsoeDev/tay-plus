@@ -17,7 +17,6 @@ export default defineConfig({
       theme_color: '#ffffff',     // Theme color (e.g., for address bar)
       background_color: '#ffffff',// Background color for splash screen
       display: 'standalone',      // Display mode: 'standalone' for app-like experience,
-      orientation: 'landscape', // Force landscape orientation
       scope: '/',                 // Scope of the PWA (usually root)
       start_url: '/',             // Start URL when launched from home screen
       icons: [
