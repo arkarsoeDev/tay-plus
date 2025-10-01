@@ -4,85 +4,74 @@ import { useSelector } from "react-redux";
 import { routes } from "./routes";
 import { useEffect } from "react";
 
-const isAuthenticated = Cookies.get("isAuthenticated");
-
 const ProtectedRoute = ({ children, requiredAuth }: any) => {
   const isLoggedIn = useSelector((state: any) => state.auth.isLoggedIn);
+  const isAuthenticated = Cookies.get("isAuthenticated");
 
   if (requiredAuth && !isAuthenticated && !isLoggedIn) {
-    return <Navigate to='/login' replace />;
+    // return <Navigate to='/login' replace />;
+    return null;
   }
   return children;
 };
 
 const AppRouter = () => {
   const location = useLocation();
+
   useEffect(() => {
     const routeMeta = getRouteMeta(location.pathname);
-
-    if (routeMeta && routeMeta.title) {
+    if (routeMeta?.title) {
       document.title = routeMeta.title;
     }
   }, [location.pathname]);
 
   const getRouteMeta = (path: string): any => {
-    let meta = undefined;
-    routes.forEach((route) => {
-      if (matchPath({ path: route.path, end: true }, path)) {
-        meta = route.meta;
+    let meta;
+    const traverse = (routesList: any[], parentPath = "") => {
+      for (const r of routesList) {
+        const fullPath = r.path ? `${parentPath}${r.path}`.replace(/\/+/g, "/") : parentPath;
+        if (r.path && matchPath({ path: fullPath, end: true }, path)) {
+          meta = r.meta;
+        }
+        if (r.children) {
+          traverse(r.children, fullPath.endsWith("/") ? fullPath : fullPath + "/");
+        }
       }
-      if (route.children) {
-        route.children.forEach((childRoute: { path: any; meta: any }) => {
-          const fullPath = `${route.path}/${childRoute.path}`.replace(
-            /\/+/g,
-            "/"
-          );
-          if (matchPath({ path: fullPath, end: true }, path)) {
-            meta = childRoute.meta;
-          }
-        });
-      }
-    });
+    };
+    traverse(routes);
     return meta;
   };
 
-  return (
-    <Routes>
-      {routes.map((route, index) => {
-        if (route.children) {
-          return (
-            <Route key={index} path={route.path} element={route.element}>
-              {route.children.map((child, childIndex) => {
-                return (
-                  <Route
-                    key={childIndex}
-                    path={child.path}
-                    element={
-                      <ProtectedRoute requiredAuth={child.meta?.requiredAuth}>
-                        {child.element}
-                      </ProtectedRoute>
-                    }
-                  />
-                );
-              })}
-            </Route>
-          );
-        }
+  const renderRoutes = (routesList: any[], parentPath = "") =>
+    routesList.map((route: any, index: number) => {
+      const fullPath = route.path
+        ? `${parentPath}${route.path}`.replace(/\/+/g, "/")
+        : parentPath;
 
+      // If route has children → render layout as-is (don’t wrap in ProtectedRoute)
+      if (route.children) {
         return (
-          <Route
-            key={index}
-            path={route.path}
-            element={
-              <ProtectedRoute requiredAuth={route.meta?.requiredAuth}>
-                {route.element}
-              </ProtectedRoute>
-            }
-          />
+          <Route key={index} path={route.path} element={route.element}>
+            {renderRoutes(route.children, fullPath.endsWith("/") ? fullPath : fullPath + "/")}
+          </Route>
         );
-      })}
-    </Routes>
-  );
+      }
+
+      // If leaf route → wrap in ProtectedRoute
+      return (
+        <Route
+          key={index}
+          path={route.path}
+          element={
+            <ProtectedRoute requiredAuth={route.meta?.requiredAuth}>
+              {route.element}
+            </ProtectedRoute>
+          }
+        />
+      );
+    });
+
+  return <Routes>{renderRoutes(routes)}</Routes>;
 };
 
 export default AppRouter;

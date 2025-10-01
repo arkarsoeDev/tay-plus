@@ -5,7 +5,7 @@
   "type": "module",
   "proxy": "http://localhost:5173/",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --port 5176",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -17,6 +17,7 @@
     "@mui/material": "^7.1.0",
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.9.0",
+    "crypto-js": "^4.2.0",
     "hls.js": "^1.6.5",
     "i18next": "^25.0.2",
     "i18next-browser-languagedetector": "^8.1.0",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/crypto-js": "^4.2.2",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",

@@ -387,7 +387,8 @@ const Profile = () => {
           <Divider sx={{ mb: "23px", borderColor: "rgba(51, 51, 102, 1)" }} />
           <Button
             onClick={() => {
-              dispatch(logout()).then(() => navigate("/login"));
+              // dispatch(logout()).then(() => navigate("/login"));
+              dispatch(logout()).then(() => window.location.href = '/login');
             }}
             variant='contained'
             color='primary'

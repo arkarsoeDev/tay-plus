@@ -106,7 +106,15 @@ export const deleteSubAccount = createAsyncThunk(
   }
 );
 
-export const logout = createAsyncThunk("auth/logout", async () => {});
+export const fetchUserFromToken = createAsyncThunk<PayloadAction, any>(
+  "auth/fetchUserFromToken",
+  async (payload) => {
+    return Promise.resolve(payload);
+  }
+);
+
+
+export const logout = createAsyncThunk("auth/logout", async () => { });
 
 interface AuthState {
   customer: object;
@@ -174,6 +182,27 @@ const authSlice = createSlice({
       state.isLoggedOut = true;
       Cookies.remove("customerInfo");
       Cookies.remove("isAuthenticated");
+      Cookies.remove("token");
+    });
+    builder.addCase(fetchUserFromToken.fulfilled, (state, action: any) => {
+      console.log(action.payload);
+      state.customer = action.payload.data.customer;
+      state.isLoggedIn = true;
+      state.isAuthenticated = true;
+      state.isLoggedOut = false;
+
+      // Refresh cookies to extend session
+      Cookies.set("token", action.payload.data.accessToken, { expires: 1, path: "/", sameSite: "Strict" });
+      Cookies.set("isAuthenticated", "true", { expires: 1, path: "/", sameSite: "Strict" });
+      Cookies.set("customerInfo", JSON.stringify(action.payload.data.customer), { expires: 1, path: "/", sameSite: "Strict" });
+    });
+
+    builder.addCase(fetchUserFromToken.rejected, (state) => {
+      state.isAuthenticated = false;
+      state.isLoggedIn = false;
+      state.customer = {};
+      Cookies.remove("isAuthenticated");
+      Cookies.remove("customerInfo");
       Cookies.remove("token");
     });
   },
