@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 
 const GlobalLayout = () => {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
   const navigate = useNavigate();
   const key = import.meta.env.VITE_BASE_ENCRYPTION_KEY;

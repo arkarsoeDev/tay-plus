@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { Routes, Route, Navigate, matchPath, useLocation } from "react-router";
+import { Routes, Route, matchPath, useLocation } from "react-router";
 import { useSelector } from "react-redux";
 import { routes } from "./routes";
 import { useEffect } from "react";

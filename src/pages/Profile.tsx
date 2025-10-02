@@ -20,7 +20,7 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../store";
 import { changePassword, logout, updateProfile } from "../store/authSlice";
 import profileImg from "../assets/images/suggested/s01.jpg";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { deleteSubAccount } from "../store/authSlice";
 
@@ -50,7 +50,6 @@ const Profile = () => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
   const customerInfo = JSON.parse(Cookies.get("customerInfo") || "{}");
   const [openChangeInfoModal, setOpenChangeInfoModal] = useState(false);
   const [openChangePinModal, setOpenChangePinModal] = useState(false);
