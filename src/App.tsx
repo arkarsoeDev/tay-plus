@@ -3,10 +3,10 @@ import PWAInstallPrompt from "./components/PWAInstallPrompt";
 import './App.css';
 
 const App = () => (
-    <>
-      <AppRouter />
-      <PWAInstallPrompt />
-    </>
-  );
+  <>
+    <AppRouter />
+    <PWAInstallPrompt />
+  </>
+);
 
 export default App;
